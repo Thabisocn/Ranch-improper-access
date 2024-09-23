@@ -1,0 +1,40 @@
+id: Ranch-Unauthorized-access
+
+info:
+  name: Ranch-Unauthorized-access
+  author: Thabisocn
+  severity: High
+  metadata:
+    max-request: 3
+    verified: true
+    Description: Firebase realtime database,, leaks database information when misconfigured allowing an anonymous user to view the vulnerable database's data
+    reference:
+    - https://firebase.google.com/docs/rules/insecure-rules/
+  tags: exposure,misconfiguration
+  
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/v1"
+    
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - '"id":'
+          - '"type":'
+          - '"apiRoots":'
+          - '"apigroups":'
+          - '"root":'
+          - '"version":'
+          
+        condition: and
+
+      - type: status
+        status:
+          - 200
+          
+
+
