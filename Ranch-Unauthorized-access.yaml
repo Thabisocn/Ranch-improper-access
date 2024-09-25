@@ -7,10 +7,10 @@ info:
   metadata:
     max-request: 3
     verified: true
-    Description: Firebase realtime database,, leaks database information when misconfigured allowing an anonymous user to view the vulnerable database's data
+    Description: test
     reference:
-    - https://firebase.google.com/docs/rules/insecure-rules/
-  tags: exposure,misconfiguration
+    - test
+  tags: exposure,unauthorized access
   
 
 http:
